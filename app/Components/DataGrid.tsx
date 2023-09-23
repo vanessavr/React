@@ -4,8 +4,9 @@ import { DataGrid, GridColDef } from '@mui/x-data-grid';
 interface DataGridDemoProps {
   headers?: GridColDef[];
   rows?: any[]; // Asegúrate de especificar el tipo correcto para tus datos de fila
-  itemsSelected: (item: any) => void; // Especifica el tipo de itemsSelected
+  itemsSelected?: (item: any) => void; // Especifica el tipo de itemsSelected
   checkboxSelection?: boolean;
+  rowSelectionModel?: any[];
 }
 
 export default function DataGridDemo({ headers = [], rows = [], itemsSelected, checkboxSelection = false, ...props}: DataGridDemoProps) { 
@@ -16,8 +17,8 @@ export default function DataGridDemo({ headers = [], rows = [], itemsSelected, c
   }, []);
 
   const arrayWithUniqueUsers = flattenedArray.filter( 
-    (value, index, self) =>
-      self.findIndex((item) => item.id === value.id) === index
+    (value: any, index: number, self: any) =>
+      self.findIndex((item: any) => item.id === value.id) === index
   );
 
   return (
@@ -34,7 +35,11 @@ export default function DataGridDemo({ headers = [], rows = [], itemsSelected, c
       pageSizeOptions={[20]}
       checkboxSelection={checkboxSelection} 
       disableRowSelectionOnClick 
-      onRowSelectionModelChange={(item) => itemsSelected(item)} 
+      onRowSelectionModelChange={(item) => {
+        if (itemsSelected) {
+          itemsSelected(item);
+        }
+      }}
       autoHeight={true} 
       {...props}
     />

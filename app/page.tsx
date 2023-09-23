@@ -12,11 +12,11 @@ import DataGridDemo from './Components/DataGrid';
 import BasicButtons from './Components/Button'; 
 
 import { Avatar } from '@mui/material'; 
-import { GridValueGetterParams } from '@mui/x-data-grid'; 
+import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid'; 
 
 const Home = () => { 
-  const usersList  = useSelector((state) => state.usersList.value); 
-  const savedUsers = useSelector((state) => state.savedUsers.value); 
+  const usersList  = useSelector((state: any) => state.usersList.value); 
+  const savedUsers = useSelector((state: any) => state.savedUsers.value); 
 
   const [filterUsers, setFilterUsers] = useState([]);  
   const [buttonStatus, setButtonStatus] = useState(false) 
@@ -27,7 +27,7 @@ const Home = () => {
     if (usersList.length == 0) { 
       fetchData();
     } else { 
-      const flattenedArray = savedUsers.reduce((accumulator, currentArray) => {
+      const flattenedArray = savedUsers.reduce((accumulator: any, currentArray: any) => {
         return accumulator.concat(currentArray);
       }, []);
 
@@ -56,18 +56,18 @@ const Home = () => {
     dispatch(populateList(results)); 
   };
 
-  const columns = [
+  const columns: GridColDef[] = [
     { field: 'first_name', headerName: 'First Name', width: 200 }, 
     { field: 'last_name', headerName: 'Last Name', width: 200 },
     { field: 'email', headerName: 'Email', width: 200 },
     { field: 'gender', headerName: 'Gender', width: 200 },
-    { field: 'avatar', headerName: 'Avatar', width: 80, renderCell: (params: GridValueGetterParams) => (
+    { field: 'avatar', headerName: 'Avatar', width: 80, renderCell: (params) => (
       <Avatar alt={`Avatar-${params.value}`} src={params.value} />
     )},
   ];
 
-  const usersSelected = (userSelected) => { 
-    setFilterUsers(usersList[0]?.filter((user) => userSelected.includes(user.id)));  
+  const usersSelected = (userSelected: any) => { 
+    setFilterUsers(usersList[0]?.filter((user: any) => userSelected.includes(user.id)));  
   };
 
   return ( 
@@ -83,7 +83,7 @@ const Home = () => {
         
         itemsSelected={usersSelected}
         
-        rowSelectionModel={filterUsers.map((user) => user.id)}
+        rowSelectionModel={filterUsers.map((user: any) => user.id)}
       />
 
       <div className='flex items-center'> 

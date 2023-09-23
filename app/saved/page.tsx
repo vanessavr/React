@@ -7,18 +7,18 @@ import DataGridDemo from '../Components/DataGrid'
 import Link from 'next/link'
 
 import { Avatar } from '@mui/material'
-import { GridValueGetterParams } from '@mui/x-data-grid'
+import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
 
 export default function Index() {
  
-  const users = useSelector((state) => state.savedUsers.value) 
+  const users = useSelector((state: any) => state.savedUsers.value) 
   
-  const columns = [
+  const columns: GridColDef[] = [
     {field: 'first_name', headerName: 'First Name', width: 200 },
     {field: 'last_name', headerName: 'Last Name', width: 200 },
     {field: 'email', headerName: 'Email', width: 200 },
     {field: 'gender', headerName: 'Gender', width: 200 },
-    {field: 'avatar', headerName: 'Avatar', width: 80, renderCell: (params: GridValueGetterParams) => (
+    {field: 'avatar', headerName: 'Avatar', width: 80, renderCell: (params) => (
       <Avatar alt={`Avatar-${params.value}`} src={params.value} />
     )},
   ]
