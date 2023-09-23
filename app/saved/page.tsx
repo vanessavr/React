@@ -8,7 +8,7 @@ import Link from 'next/link'
 
 import { Avatar } from '@mui/material'
 import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 export default function Index() {
 
