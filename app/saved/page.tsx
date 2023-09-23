@@ -8,8 +8,12 @@ import Link from 'next/link'
 
 import { Avatar } from '@mui/material'
 import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
+import { useRouter } from 'next/router'
 
 export default function Index() {
+
+  const router = useRouter()
+
  
   const users = useSelector((state: any) => state.savedUsers.value) 
   
@@ -31,6 +35,8 @@ export default function Index() {
 
       <div className='flex items-center'>
         <Link href="/" className='border p-1.5 ml-2 px-4 mt-10 rounded uppercase'>Users list</Link>
+        <button onClick={() => router.back()}>Back</button>
+
       </div>
     </div>
   )
