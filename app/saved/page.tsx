@@ -4,10 +4,8 @@ import { useSelector } from 'react-redux'
 
 import DataGridDemo from '../Components/DataGrid'
 
-import Link from 'next/link'
-
 import { Avatar } from '@mui/material'
-import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
+import { GridColDef } from '@mui/x-data-grid'
 import { useRouter } from 'next/navigation'
 
 export default function Index() {
@@ -34,9 +32,7 @@ export default function Index() {
       <DataGridDemo headers={columns} rows={users}></DataGridDemo>
 
       <div className='flex items-center'>
-        <Link href="/" className='border p-1.5 ml-2 px-4 mt-10 rounded uppercase'>Users list</Link>
-        <button onClick={() => router.back()}>Back</button>
-
+        <button onClick={() => router.back()} className='border p-1.5 ml-2 px-4 mt-10 rounded uppercase'>Users list</button>
       </div>
     </div>
   )
