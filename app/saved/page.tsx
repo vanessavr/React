@@ -30,7 +30,7 @@ export default function Index() {
       <DataGridDemo headers={columns} rows={users}></DataGridDemo>
 
       <div className='flex items-center'>
-        <Link href="/" className='border p-1.5 ml-2 px-4 mt-10 rounded uppercase' replace>Users list</Link>
+        <Link href="/" className='border p-1.5 ml-2 px-4 mt-10 rounded uppercase'>Users list</Link>
       </div>
     </div>
   )
